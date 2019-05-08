@@ -11,5 +11,5 @@ for name in sets1:
 # Remove 482 from the set if it is present
 sets1.remove(482)
 # Remove 42 from the set even if it is not present
-
+sets1.remove(42)
 
