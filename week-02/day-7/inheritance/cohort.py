@@ -2,7 +2,7 @@ from student import Student
 from mentor import Mentor
 
 class Cohort():
-    def __init__(self,name):
+    def __init__(self,name='Jane Doe'):
         self.name = name
         self.students = []
         self.mentors = []
@@ -18,7 +18,7 @@ class Cohort():
     def info(self):
         print(f"The {self.name} cohort has {len(self.students)} students and {len(self.mentors)} mentors.")
 
-cohort = Cohort('Jane Doe')    
-print(cohort.add_student(Student))
-print(cohort.add_mentor(Mentor))
-print(cohort.info())
+# cohort = Cohort('Jane Doe')    
+# print(cohort.add_student(Student))
+# print(cohort.add_mentor(Mentor))
+# print(cohort.info())
