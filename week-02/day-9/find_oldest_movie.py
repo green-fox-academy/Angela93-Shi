@@ -4,6 +4,7 @@ import re
 f=open('movies.csv','r')
 csvreader = csv.reader(f)
 final_list=list(csvreader)
+f.close
 print(final_list)
 
 for i in range(len(final_list)):
