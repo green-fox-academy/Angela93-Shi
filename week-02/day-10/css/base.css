@@ -1,0 +1,291 @@
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{
+    margin:0;
+    padding:0;
+    border:0;
+} 
+body{
+    background:#fff;
+    color:#333;
+    font-size:16px; 
+    /* margin-top:5px; */
+    /* font-family:"PingFang"; */
+} 
+/* @font-face{
+    font-family: "PingFang";
+    src:url('../font/PingFang.ttc')
+}    */
+ul,ol{
+    list-style-type:none;
+} 
+select,input,img,select{
+    vertical-align:middle;
+} 
+    
+a{
+    text-decoration:none;
+} 
+a:link{
+    color:#333;
+} 
+a:visited{
+    color:#800080;
+} 
+a:hover,a:active,a:focus{
+    color:#c00;
+    text-decoration:underline;
+} 
+.container{
+    margin:30px auto 0;
+    
+}
+/* exercise-01 style begin */
+.box-container1{
+    width:200px;
+}
+.box-item{
+    font-size: 24px;
+    border: 5px #7DCE94 solid;
+    background-color: #0E91A1;
+    height: 100px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+/* exercise-01 style end */
+/* exercise-02 style begin */
+.box-container2{
+    border:5px #4285F4 solid;
+    width:200px;
+}
+.box-list{
+    font-size: 24px;
+    height: 100px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    line-height: 100px;
+}
+.box-container2 .north-item{
+    background-color: #E67676;
+}
+.box-container2 .east-item{
+    background-color: #F2F062;
+}
+.box-container2 .sourth-item{
+    background-color: #A9E6E6;
+}
+.box-container2 .west-item{
+    background-color: #7692E4;
+}
+/* exercise-02 style end */
+
+/* exercise-03 style begin */
+.box-container3{
+    width:200px;
+}
+.top-box .box3-item ,.bottom-box .box3-item {
+    height:100px;
+}
+.top-box{
+    background-color: #E67676;
+    border:5px #4285F4 solid;
+    margin-bottom: 10px;
+}
+.bottom-box{
+    background-color: #A9E6E6;
+    border:5px #4285F4 solid;
+}
+/* exercise-03 style end */
+
+/* exercise-04 style begin */
+.box-container4{
+    text-align: left;
+    width: 500px;
+}
+.title{
+    color:#EE655B;
+}
+.sub-title{
+    color:#8939CD;
+    padding:20px 0;
+}
+.box-container4 li{
+    list-style: disc;
+}
+.box-container4 ul:first-child{
+    padding-left: 40px;
+}
+.box-container4 ul ul{
+    padding-left:12px;
+}
+.box-container4 ul ul li{
+    list-style: none;
+    text-decoration: underline;
+}
+.have-color-link a{
+    color:#BC55B5;
+}
+.have-padding-left{
+    padding-left:40px;
+}
+/* exercise-04 style end */
+
+/* exercise-05 style begin */
+.box-container5{
+    width: 300px;
+}
+.box-container5 *{
+    color:#fff;
+}
+.duck-box1 {
+    position: relative;
+    background-color: #FF6347;
+    padding: 20px 70px;
+    background-image: url(../images/the-duck.png);
+    background-size: 80px;
+    background-repeat: no-repeat;
+    background-position: left;
+    text-align: center;
+}
+.duck-box2{
+    position: relative;
+    background-color: #643579;
+    padding: 20px 70px;
+    background-image: url(../images/the-duck.png);
+    background-size: 200px;
+    background-repeat: no-repeat;
+    background-position:center;
+    text-align: center;
+}
+.duck-box3{
+    position: relative;
+    background-color: #808080;
+    padding: 20px 70px;
+    background-image: url(../images/the-duck.png);
+    background-size: 80px;
+    background-repeat: no-repeat;
+    background-position: 210px 180px;
+    text-align: center;
+}
+.box-container5 >div{
+    margin-bottom:10px;
+}
+/* exercise-05 style end */
+
+/* exercise-06 style begin */
+.box-container6{
+    width:300px;
+}
+.box-container6 .news-title{
+    margin-bottom: 20px;
+}
+.news-box-item {
+    border: 1px solid #333;
+    border-top: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+.container .news-box-item.last-child{
+    border-bottom:0;
+}
+.news-box-item:hover{
+    background-color: #EA6942;
+}
+/* exercise-06 style end */
+
+/* exercise-07 style begin */
+.container.box-container7 {
+    width: 500px;
+    margin-top: 50px;
+}
+.layout-box {
+    border: 1px solid #dadada;
+    padding: 20px 10px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.layout-box-title {
+    position: absolute;
+    height: 20px;
+    line-height: 20px;
+    background-color: #fff;
+    top: -11px;
+}
+.layout-box-title img{
+    height:16px;
+}
+.layout-box input{
+    height:24px;
+    padding-left: 10px;
+}
+.layout-box .choose-color >div{
+    display: block;
+
+}
+.layout-box textarea{
+    height: 100px;
+    width: 50%;
+    resize: none;
+}
+button.submit-btn {
+    height: 40px;
+    padding: 0 40px;
+    background: #0075a4;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+}
+/* exercise-07 style end */
+
+/* my first web page */
+.have-background-image {
+    background-image: url(../images/background.jpg);
+    background-size: contain;
+    width: 100vw;
+    height: 100vh;
+}
+.header {
+    height: 40px;
+    line-height: 40px;
+    background-color: #333;
+    padding:0 100px;
+    position: relative;
+}
+.header img{
+    position: relative;
+    top: -2px;
+}
+.link-area {
+    position: absolute;
+    right: 100px;
+    display: inline-block;
+    color:#E01E57;
+}
+.link-area li{
+    display: inline-block;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0 10px;
+    text-transform: uppercase;
+}
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 100px;
+}
+.main-container h1{
+    font-weight:600;
+    padding-bottom:20px;
+}
+.main-container h3{
+    padding-bottom:10px;
+}
+.main-container h3{
+    color:#E01E57;
+}
+.bottom-content {
+    margin-top: 100px;
+}
+h2.bottom-content-title {
+    text-align: center;
+    padding-bottom: 20px;
+}
