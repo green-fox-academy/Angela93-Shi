@@ -6,43 +6,85 @@ csvreader = csv.reader(f)
 final_list=list(csvreader)
 f.close
 
-p=re.compile(r'^\d+\,\d{4}\.\d{2}.\d{2}\.\s(\d{1,2}\:\d{1,2}\:\d{1,2})\,')
-#print(p.match('1,2019.01.02. 9:21:49,Access granted,203,12,A66 - 04 FÕBEJÁRAT (F-1) Door #1,5,Czender András,0,,0,,00215:09895'))
+
 list_time=[]
 list_person=[]
-list_person_arrived={}
+clock_time_list=[]
+clock_time_dic={}
+clock_record_dic={}
+# t=re.compile(r'\d{4}\.\d{2}.(\d{2})\.\s(\d{1,2}\:\d{1,2}\:\d{1,2})')
+
+user_id=set()
 for i in range(len(final_list)):
-    list_date_time = final_list[i][1]
-    log_name= final_list[i][7]
-    if log_name not in list_person:
-        list_person.append(log_name)
-    list_person_arrived.update({final_list[i][1]:final_list[i][7]})
+    user_id.add(final_list[i][12])
+# print(user_id)
 
-t=re.compile(r'\d{4}\.\d{2}.\d{2}\.\s(\d{1,2}\:\d{1,2}\:\d{1,2})')
-sum_hour=0
-sum_min=0
-sum_sec=0
-# print(len(list_person_arrived))
-for i in range(len(list_person_arrived)):
-    list_person_arrived_time = list_person_arrived.keys()
-    list_person_arrived_time_str = ''.join(list_person_arrived_time)
-    # figure the average time in for loop begin
-    m=t.match(list_person_arrived_time_str)
-    specific_time = m.group(1)
-    hour_min_sec=specific_time.split(':')
-    sum_hour += int(hour_min_sec[0])
-    sum_min += int(hour_min_sec[1])
-    sum_sec += int(hour_min_sec[2])
-    # figure the average time in for loop end
+log_time_person={}
+for i in user_id:
+    clock_time_list=[]
+    for j in final_list:
+        if j[12] == i:
+            clock_time_list.append(j[1])
+    log_time_person[i] = clock_time_list
+# print(log_time_person)
+# p1 = re.compile(r"^(2019.01.[\d]{2})")
+# p2 = re.compile(r"([\d]{1,2}:[\d]{2}:[\d]{2})")
+# p3 = re.compile(r"([\d]{1,2}):[\d]{2}:[\d]{2}")
+p4 = re.compile(r"2019.01.([\d]{2})")
+t=re.compile(r'\d{4}\.\d{2}.(\d{2})\.\s(\d{1,2}\:\d{1,2}\:\d{1,2})')
 
-    list_person_arrived_time_list = list(specific_time )
-    print(list_person_arrived_time_list)
+person_first_log_list=[]
+sum_hour = 0
+sum_min = 0
+sum_sec = 0
+for key in log_time_person:
+    log_time_person_first_log={}
+    log_date=set()
+    for j in log_time_person[key]:
+        if int(p4.match(j).group(1)) >= 14:
+            log_date.add(p4.match(j).group(1))
 
+    log_time_dic={}
+    
+    for i in log_date:
+        log_times_list=[]
+        for j in log_time_person[key]:
+            if p4.match(j).group(1) == i:
+                log_times_list.append(j)
+        log_time_dic[i] = log_times_list
 
-average_hour = int(sum_hour / len(list_person_arrived))
-average_min = int(sum_min / len(list_person_arrived))
-average_sec = int(sum_sec / len(list_person_arrived))
+    first_clock_in_dic={}
+    for day in log_time_dic:
+        first_clock_in = log_time_dic[day][0]
+        first_clock_in_dic[day] = first_clock_in
+        log_time_person_first_log[key] = first_clock_in_dic
+    person_first_log_list.append(log_time_person_first_log)
+print(person_first_log_list)
+
+for i in person_first_log_list:
+    for j in i:
+        date=i[j]
+        for m in date:
+            specific_date_time = date[m]
+            specific_time= (t.match(specific_date_time)).group(2)
+            hour_min_sec=specific_time.split(':')
+        sum_hour += int(hour_min_sec[0])
+        sum_min += int(hour_min_sec[1])
+        sum_sec += int(hour_min_sec[2])
+
+average_hour = int(sum_hour / len(person_first_log_list))
+average_min = int(sum_min / len(person_first_log_list))
+average_sec = int(sum_sec / len(person_first_log_list))
+# print(average_min)    
+# print(average_sec)
 print(f"the average time is {average_hour}:{average_min}:{average_sec}")
+
+
+
+
+        
+
+
 
 
 
