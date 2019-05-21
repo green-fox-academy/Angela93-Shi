@@ -1,6 +1,7 @@
 from angela_work import AngelaWork
 from sharpie import Sharpie
 from animal import Animal
+from cows_and_bulls import CAB
 import unittest
 
 class Testing_Angela_work(unittest.TestCase):
@@ -62,6 +63,10 @@ class Testing_Angela_work(unittest.TestCase):
         self.assertEqual(animal.eat(),49)
         self.assertEqual(animal.drink(),49)
         self.assertEqual(animal.play(),(50,50))
+    
+    def test_cab(self):
+        cab_instance = CAB()
+        self.assertEqual(cab_instance.getHint(),'Success!')
 
 if __name__ == "__main__":
     unittest.main()
