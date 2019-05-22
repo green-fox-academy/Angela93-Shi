@@ -1,0 +1,103 @@
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{
+    margin:0;
+    padding:0;
+    border:0;
+} 
+body{
+    background:#fff;
+    color:#333;
+    font-size:16px; 
+    /* margin-top:5px; */
+    /* font-family:"PingFang"; */
+} 
+/* @font-face{
+    font-family: "PingFang";
+    src:url('../font/PingFang.ttc')
+}    */
+ul,ol{
+    list-style-type:none;
+} 
+select,input,img,select{
+    vertical-align:middle;
+} 
+    
+a{
+    text-decoration:none;
+} 
+/* a:link{
+    color:#333;
+}  */
+a:visited{
+    color:#800080;
+} 
+a:hover,a:active,a:focus{
+    color:#c00;
+    text-decoration:underline;
+} 
+.container{
+    margin:30px auto 0;
+    
+}
+/* my first web page */
+.have-background-image {
+    background-image: url(./background.jpg);
+    background-size: contain;
+    width: 100vw;
+    height: 100vh;
+}
+.header {
+    height: 40px;
+    line-height: 40px;
+    background-color: #333;
+    padding:0 100px;
+    position: relative;
+}
+.header img{
+    position: relative;
+    top: -2px;
+}
+.link-area {
+    position: absolute;
+    right: 100px;
+    display: inline-block;
+    color:#E01E57;
+}
+.link-area li{
+    display: inline-block;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0 10px;
+    text-transform: uppercase;
+}
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 100px;
+}
+.main-container h1{
+    font-weight:600;
+    padding-bottom:20px;
+}
+.main-container h3{
+    padding-bottom:10px;
+}
+.main-container h3{
+    color:#E01E57;
+}
+.bottom-content {
+    margin-top: 100px;
+}
+h2.bottom-content-title {
+    text-align: center;
+    padding-bottom: 20px;
+}
+/* movies style begin */
+.movies-container{
+    padding:50px;
+}
+.movies-container a{
+    color:#0075a4;
+}
+.movies-container h1{
+    margin-bottom:50px;
+}
