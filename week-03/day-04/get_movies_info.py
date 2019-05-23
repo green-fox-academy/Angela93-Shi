@@ -56,8 +56,8 @@ def create_database(movie_id,title,year,description):
     create_dict['title'] = title
     create_dict['year'] = year
     create_dict['description'] = description
-    
-    return create_dict
+    movie_list.append(create_dict)
+    return movie_list
 
 # [PUT] /api/movies/<movie_id>
 
