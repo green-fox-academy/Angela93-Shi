@@ -7,7 +7,7 @@ from movies_info import movie_list
 
 app = Flask(__name__)
 
-@app.route('/api')
+@app.route('/api/movies')
 
 def api_root():
     movies=[]
