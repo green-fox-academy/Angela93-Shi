@@ -61,7 +61,6 @@ def create_database(movie_id,title,year,description):
 
 # [PUT] /api/movies/<movie_id>
 
-
 @app.route('/api/movies/<movie_id>',methods=['PUT'])
 def put_movie(movie_id):
     movie_get_id = request.form['id']
@@ -71,10 +70,12 @@ def put_movie(movie_id):
         movie_replaced_year = "1990"
         movie_replaced_description = "A band of kids embark on an epic quest to thwart a medieval menace."
         update_dict = update_database(movie_replaced_id,movie_replaced_title,movie_replaced_year,movie_replaced_description)
+    
     if is_right_api():
         return jsonify(update_dict),200
     else:
-        return "error"
+        error_hint = {"error":"No movie found with <movie_id> ID"}
+        return jsonify(error_hint),404
  
 
 def update_database(movie_replaced_id,movie_replaced_title,movie_replaced_year,movie_replaced_description):
@@ -85,6 +86,28 @@ def update_database(movie_replaced_id,movie_replaced_title,movie_replaced_year,m
     update_dict['description'] = movie_replaced_description
     
     return update_dict
+
+
+# [DELETE] /api/movies/<movie_id>
+@app.route('/api/movies/<movie_id>', methods=['DELETE'])
+def delete_movie(movie_id):
+    if is_right_api():
+        for movie_dict in movie_list:
+            if movie_dict['id'] == int(movie_id):
+                del movie_dict['id']
+                del movie_dict['title']
+                del movie_dict['year']
+                del movie_dict['description']
+
+                if movie_dict == {}:
+                    movie_list.remove(movie_dict)        
+                return jsonify(movie_list)
+            else:
+                error_hint = {"error":"no movie can be found with <movie_id>"}
+                return jsonify(error_hint),404
+    else:
+        error_hint = {"error":"Invalid API_KEY"}
+        return jsonify(error_hint),403
 
 
 if __name__ == "__main__":
