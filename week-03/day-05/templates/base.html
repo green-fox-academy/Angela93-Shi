@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>base</title>
+    <style>
+        body{
+            margin:20px;
+        }
+        h1{
+            color:#002f5f;
+        }
+        li{
+            font-size: 24px;
+            line-height: 40px;
+        }
+
+        li a{
+            font-size: 24px;
+        }
+        .content{
+            background-color: #0075a4;
+            padding: 24px;
+            color: #fff;
+            border-radius: 20px;
+        }
+        .content *{
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="link-block">
+        <h1>Here are the links:</h1>
+        <ul>
+            <li><a href="http://127.0.0.1:5000/greet">randon language</a></li>
+            <li><a href="http://127.0.0.1:5000/greet2">randon language2</a></li>
+            <li><a href="http://127.0.0.1:5000/products">products</a></li>
+            <li><a href="http://127.0.0.1:5000/articles">articles</a></li>
+            <li><a href="http://127.0.0.1:5000/posts">posts</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        {% block content %}Here the block shows{% endblock %}
+    </div>
+
+</body>
+</html>
