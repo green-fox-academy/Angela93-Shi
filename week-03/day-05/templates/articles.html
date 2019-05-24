@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>articles</title>
+    <style>
+        .content{
+            background-color: #0075a4;
+            padding: 24px;
+            color: #fff;
+            border-radius: 20px;
+        }
+    </style>
 </head>
 <body>
+    {% extends "base.html" %}
+    {% block content %}
     {% for article in articles %}
 
     <p>{{article["content"] | truncate(225) }}</p>
@@ -21,5 +31,6 @@
     </p>
     {% endif %}
     {% endfor %}
+    {% endblock %}
 </body>
 </html>
