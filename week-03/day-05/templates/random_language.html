@@ -7,6 +7,9 @@
     <title>greeting</title>
 </head>
 <body>
+    {% extends "base.html" %}
+    {% block content %}
     <h1>{{ greet }}, {{name | upper }}</h1>
+    {% endblock %}
 </body>
 </html>
