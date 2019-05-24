@@ -9,17 +9,18 @@ class Tree:
         return self.height
 
 class WhitebarkPine(Tree):
-    # def __init__(self,height):
-    #     self.height = height
-    #     Tree.__init__(self , height=0)
+    def __init__(self,height=0):
+        Tree.__init__(self , height)
+        self.height = height
+
     def irrigate(self):
         self.height += 2
 
 
 class FoxtailPine(Tree):
-    # def __init__(self,height):
-    #     self.height = height
-    #     Tree.__init__(self , height=0)
+    def __init__(self,height=0):
+        Tree.__init__(self , height)
+        self.height = height
     def irrigate(self):
         self.height += 2
 
@@ -32,13 +33,12 @@ class Lumberjack:
         
 
 class Forest:
-    def __init__(self,trees=[]):
-        self.trees = trees
+    def __init__(self):
+        self.trees =[]
     
     def add_tree(self,tree):
         self.trees.append(tree)
-
-    
+ 
     def rain(self):
         for tree in self.trees:
             tree.irrigate()
@@ -48,6 +48,7 @@ class Forest:
         for tree in self.trees:
             if lumberjack.canCut(tree):
                 trees_cut.append(tree)
+
         
         for i in trees_cut:
             for tree in self.trees:
@@ -62,28 +63,22 @@ class Forest:
             return False
     
     def get_status(self):
-        # trees_status = []
+
         for tree in self.trees:
             # tree.__class__.__name__     get the current name of tree
-            return f'there is a {tree.height} tall {tree.__class__.__name__} in the forest'      
+            return f'there is a { tree.height } tall  {tree.__class__.__name__}in the forest'      
 
-    
 
-tree = Tree()    
    
-whitebarkPine = WhitebarkPine(5)
-whitebarkPine.irrigate()
-# print(whitebarkPine.height)
+   
+whitebarkPine = WhitebarkPine(3)
+# whitebarkPine.irrigate()
 foxtailPine = FoxtailPine(4)
-foxtailPine.irrigate()
-
-
-
-lumberjack = Lumberjack()
+# foxtailPine.irrigate()
+# lumberjack = Lumberjack()
 
 forest = Forest()
-forest.add_tree(WhitebarkPine)
-forest.add_tree(FoxtailPine)
-forest.add_tree(WhitebarkPine)
-# forest.rain()
-# forest.get_status()
+forest.add_tree(whitebarkPine)
+forest.add_tree(foxtailPine)
+# # forest.rain()
+print(forest.get_status())
