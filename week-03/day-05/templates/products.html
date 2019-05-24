@@ -7,6 +7,8 @@
     <title>products</title>
 </head>
 <body>
+    {% extends "base.html" %}
+    {% block content %}
     <table>
         <tr>
           <th>#</th>
@@ -21,5 +23,6 @@
         </tr>
         {% endfor %}
       </table>
+      {% endblock %}
 </body>
 </html>
