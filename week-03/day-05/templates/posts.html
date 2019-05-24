@@ -7,15 +7,45 @@
     <title>posts</title>
 
     <style>
-        body {
+        .header {
+            height: 40px;
+            line-height: 40px;
             background-color: #002f5f;
+            padding:0 100px;
+            position: relative;
+        }
+        .header img{
+            position: relative;
+            top: -2px;
+        }
+        .link-area {
+            position: absolute;
+            right: 100px;
+            display: inline-block;
             color:#fff;
-            /* color: hsl(222, 53%, 19%); */
+            margin:0;
+        }
+        .link-area a{
+            color:#fff;
+        }
+        .link-area li{
+            display: inline-block;
+            text-decoration: underline;
+            cursor: pointer;
+            padding: 0 10px;
+            text-transform: uppercase;
+        }
+        .container{
+            padding:0 100px;
+        }
+        body {
+            background-color: #fff;
+            color: hsl(222, 53%, 19%);
+            margin:0;
         }
 
         a {
-            /* color: hsl(0, 0%, 17%); */
-            color:#fff;
+            color: hsl(0, 0%, 17%);
             opacity: .75;
             text-decoration: none;
             font-size: 1rem;
@@ -24,24 +54,34 @@
 
         a:hover {
             opacity: 1;
-            color:#0075a4;
-            /* background-color: hsl(0, 0%, 80%); */
+            background-color: hsl(0, 0%, 80%);
         }
     </style>
 </head>
 <body>
-    <h1>Posts</h1>
-    {% for post in posts %}
-    <article>
-        <h1 id="{{ post['id'] }}">{{ post['name '] }}#{{ post['id'] }}<a href="#p{{ post['id'] }}">¶</a></h1>
-        <p>{{ post['content'] }}</p>
-        <p>
-            Liked by:
-            {% for list in post["like_by"] %}
-                <span>{{list}}</span>
-            {% endfor %}
-        </p>
-    </article>
-    {% endfor %}
+
+    {% extends "base.html" %}
+
+        {% block navibar %}
+            {{ super() }}
+        {% endblock %}
+
+    {% block content %}
+    <div class="container">
+        <h1>Posts</h1>
+        {% for post in posts %}
+        <article>
+            <h1 id="{{ post['id'] }}">{{ post['name '] }}#{{ post['id'] }}<a href="#p{{ post['id'] }}">¶</a></h1>
+            <p>{{ post['content'] }}</p>
+            <p>
+                Liked by:
+                {% for list in post["like_by"] %}
+                    <span>{{list}}</span>
+                {% endfor %}
+            </p>
+        </article>
+        {% endfor %}
+    </div>
+    {% endblock %}
 </body>
 </html>
