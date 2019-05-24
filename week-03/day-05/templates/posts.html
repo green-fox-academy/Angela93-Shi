@@ -35,9 +35,9 @@
             padding: 0 10px;
             text-transform: uppercase;
         }
-        .container{
+        /* .container{
             padding:0 100px;
-        }
+        } */
         body {
             background-color: #fff;
             color: hsl(222, 53%, 19%);
@@ -59,13 +59,7 @@
     </style>
 </head>
 <body>
-
-    {% extends "header.html" %}
-
-        {% block navibar %}
-            {{ super() }}
-        {% endblock %}
-
+    {% extends "base.html" %}
     {% block content %}
     <div class="container">
         <h1>Posts</h1>
