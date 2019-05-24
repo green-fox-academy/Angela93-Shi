@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>articles</title>
+</head>
+<body>
+    {% for article in articles %}
+
+    <p>{{article["content"] | truncate(225) }}</p>
+    {% if article["seen"] == [] %}
+    <p>No one has seen this article before.</p>
+    {% else %}
+    <p>
+        seen by:
+        {% for list in article["seen"] %}
+            <span>{{list}}</span>
+        {% endfor %}
+    </p>
+    {% endif %}
+    {% endfor %}
+</body>
+</html>
