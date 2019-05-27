@@ -32,7 +32,8 @@ SELECT name,rating FROM products JOIN reviews ON products.id = reviews.product_i
 -- Which product has the worst rating?
 SELECT name,rating FROM products JOIN reviews ON products.id = reviews.product_id ORDER BY rating ASC LIMIT 1
 -- Which products have no review?
-SELECT name FROM products JOIN reviews ON products.id = reviews.product_id WHERE reviews.comment is null
+SELECT products.name FROM products LEFT JOIN reviews ON products.id = reviews.product_id WHERE reviews.product_id is null
+SELECT name FROM products WHERE products.id not in (SELECT product_id FROM reviews)
 -- How many reviews are 3 or below without comment?
 SELECT COUNT(*) FROM reviews WHERE rating <= 3 AND comment is null
 -- Which user reviewed the most?
