@@ -102,6 +102,7 @@ mentions_opera()
 
 
 # Create views for the questions below
+
 #question one :Who sent the most messages to the thanks channel?
 get_view1='''
     CREATE VIEW vn AS
@@ -111,10 +112,15 @@ get_view1='''
     ORDER BY num DESC LIMIT 1
     '''
 # cursor.execute(get_view1)
-select_query1 = 'SELECT * FROM vn'
-cursor.execute(select_query1)
-result1=cursor.fetchall()
-print(f'{result1[0][0]} sent the most messages to the channel, {result1[0][1]} times')
+
+def most_messages():
+    select_query1 = 'SELECT * FROM vn'
+    cursor.execute(select_query1)
+    result1=cursor.fetchall()
+    # print(f'{result1[0][0]} sent the most messages to the channel, {result1[0][1]} times')
+    return result1
+
+most_messages()
 
 #question two:Which emoji is the most common as reaction in the thanks channel?
 get_view2='''
@@ -124,11 +130,14 @@ get_view2='''
         GROUP BY reaction
         ORDER BY num LIMIT 1
         '''
-cursor.execute(get_view2)
-select_query2 = 'SELECT * FROM emoji_common'
-cursor.execute(select_query2)
-result2=cursor.fetchall()
-print(f'emoji {result2[0][0]} is the most common reaction, {result2[0][1]} times')
+#cursor.execute(get_view2)
+def most_emoji():
+    select_query2 = 'SELECT * FROM emoji_common'
+    cursor.execute(select_query2)
+    result2=cursor.fetchall()
+    # print(f'emoji {result2[0][0]} is the most common reaction, {result2[0][1]} times')
+    return result2
+most_emoji()
 
 #question three:Who reacted to the most messages?
 get_view3='''
@@ -138,12 +147,15 @@ get_view3='''
         GROUP BY user_id
         ORDER BY num DESC LIMIT 1
         '''
-cursor.execute(get_view3)
-select_query3 = 'SELECT * FROM most_react'
-cursor.execute(select_query3)
-result3=cursor.fetchall()
-print(f'{result3[0][0]} reacts most, {result3[0][1]} times')
+# cursor.execute(get_view3)
+def reacted_most():
+    select_query3 = 'SELECT * FROM most_react'
+    cursor.execute(select_query3)
+    result3=cursor.fetchall()
+    # print(f'{result3[0][0]} reacts most, {result3[0][1]} times')
+    return result3
 
+reacted_most()
 
-cursor.close()
-con.close()
+# cursor.close()
+# con.close()
