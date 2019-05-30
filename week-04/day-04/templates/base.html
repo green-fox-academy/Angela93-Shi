@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>base</title>
+    <style>
+        body{
+            margin:20px;
+        }
+        h1{
+            color:#002f5f;
+        }
+        li{
+            font-size: 24px;
+            line-height: 40px;
+        }
+
+        li a{
+            font-size: 24px;
+        }
+        .content{
+            background-color: #0075a4;
+            padding: 24px;
+            color: #fff;
+            border-radius: 20px;
+        }
+        .content *{
+            color:#fff;
+        }
+        table{
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        table th,table td{
+            border:1px solid #fff;
+            padding:10px;
+        }
+        .question_text {
+            font-size: 24px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="link-block">
+        <h1>Here are the links:</h1>
+        <ul>
+             <li><a href="http://127.0.0.1:5000/messages">messages</a></li>
+             <li><a href="http://127.0.0.1:5000/reactions">reactions</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        {% block content %}Here the block shows{% endblock %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>reactions</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="question_text">Which emoji is the most common as reaction in the thanks channel?</div>
+    <table>
+        <tr>
+          <th>#</th>
+          <th>reaction_name</th>
+          <th>used_count</th>
+        </tr>
+        {% for reaction in reactions %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ reaction[0] }}</td>
+          <td>{{ reaction[1] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      <div class="question_text">Who reacted to the most messages?</div>
+      <table>
+            <tr>
+              <th>#</th>
+              <th>reaction_name</th>
+              <th>used_count</th>
+            </tr>
+            {% for reaction in reactions2 %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td>{{ reaction[0] }}</td>
+              <td>{{ reaction[1] }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+      {% endblock %}
+</body>
+</html>
