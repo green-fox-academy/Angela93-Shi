@@ -58,25 +58,18 @@ messages_opera()
 
 
 # inert data for table reacrions
-def get_reaction_id():
-    reaction_list=[]
-    reaction_index_list=[]
-    for json in jsondata:
-        try:
-            reaction_block=json['reactions']
-        except:
-            pass
-        reaction_dict=reaction_block[0]
-        reaction_name=reaction_dict["name"]     
-    return reaction_name
-get_reaction_id()
 
 def reaction_opera():
     for json in jsondata:
         user_id=json['user']
         if 'client_msg_id' in json:
             message_id = json['client_msg_id']
-            reaction = get_reaction_id()
+            try:
+                reaction_block=json['reactions']
+            except:
+                pass
+            reaction_dict=reaction_block[0]
+            reaction=reaction_dict["name"]  
             insert_query = 'INSERT INTO reactions(user_id,message_id,reaction) VALUES (%s,%s,%s)'
             #cursor.execute(insert_query,(user_id,message_id,reaction))
     con.commit()
@@ -84,13 +77,20 @@ def reaction_opera():
 reaction_opera()
 
 # inert data for table mentions
+# s=re.compile(r'\<\@\w[9]\>')
 def mentions_opera():
     for json in jsondata:
         if 'client_msg_id' in json:
             message_id = json['client_msg_id']
-            user_id=json['user']
-            insert_query = 'INSERT INTO mentions VALUES (%s,%s)'
-            #cursor.execute(insert_query,(message_id,user_id))
+            # user_id=json['user']
+            try:
+                text=json['text']
+                mentiond_user = re.findall(r"<@(\w{9})>",text)
+            except:
+                pass
+            for user in mentiond_user:
+                insert_query = 'INSERT INTO mentions VALUES (%s,%s)'
+                # cursor.execute(insert_query,(message_id,user))
     con.commit()
 
 mentions_opera()
@@ -124,15 +124,15 @@ most_messages()
 
 #question two:Which emoji is the most common as reaction in the thanks channel?
 get_view2='''
-        CREATE VIEW emoji_common AS
+        CREATE VIEW emoji_most_popular AS
         SELECT reaction,count(reaction) AS num
         FROM reactions
         GROUP BY reaction
-        ORDER BY num LIMIT 1
+        ORDER BY num DESC LIMIT 1
         '''
-#cursor.execute(get_view2)
+cursor.execute(get_view2)
 def most_emoji():
-    select_query2 = 'SELECT * FROM emoji_common'
+    select_query2 = 'SELECT * FROM emoji_most_popular'
     cursor.execute(select_query2)
     result2=cursor.fetchall()
     # print(f'emoji {result2[0][0]} is the most common reaction, {result2[0][1]} times')
@@ -156,6 +156,26 @@ def reacted_most():
     return result3
 
 reacted_most()
+
+#question four:Which day was the most active in the channel?
+# 2019-05-28 00:18:33
+s=re.compile(r'(\d{4}-\d{2}\d{2})\s\d{2}:\d{2}:\d{2}')
+get_view3='''
+        CREATE VIEW most_active AS
+        SELECT to_date(to_char(sent_at, 'YYYY/MM/DD'), 'YYYY/MM/DD') AS date,count(*) AS num
+        FROM messages
+        GROUP BY Date
+        ORDER BY num DESC LIMIT 1
+        '''
+# cursor.execute(get_view3)
+def most_active():
+    select_query4 = "SELECT * FROM most_active"
+    cursor.execute(select_query4)
+    result4=cursor.fetchall()
+    #print(f'{result4[0][0]} is the most active, post messages {result4[0][1]} times')
+    return result4
+most_active()
+
 
 # cursor.close()
 # con.close()

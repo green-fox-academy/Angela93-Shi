@@ -24,12 +24,26 @@
         </tr>
         {% endfor %}
       </table>
+      <div class="sql_sentence">
+          <div class="tip_title">
+              <img src="static/tishi.png"/>
+              <p>SQL QUERY</p>
+          </div>
+          CREATE VIEW emoji_most_popular AS
+          SELECT reaction,count(reaction) AS num
+          FROM reactions
+          GROUP BY reaction
+          ORDER BY num DESC LIMIT 1</div>
+      <div class="first-question-records">
+          <div class="five-records">The first five records:</div>
+          <img src="static/result2.png"/>
+      </div>
 
       <div class="question_text">Who reacted to the most messages?</div>
       <table>
             <tr>
               <th>#</th>
-              <th>reaction_name</th>
+              <th>user_name</th>
               <th>used_count</th>
             </tr>
             {% for reaction in reactions2 %}
@@ -40,6 +54,20 @@
             </tr>
             {% endfor %}
           </table>
+          <div class="sql_sentence">
+              <div class="tip_title">
+                  <img src="static/tishi.png"/>
+                  <p>SQL QUERY</p>
+              </div>
+              CREATE VIEW most_react AS
+              SELECT user_id,count(user_id) AS num
+              FROM reactions
+              GROUP BY user_id
+              ORDER BY num DESC LIMIT 1</div>
+          <div class="">
+              <div class="five-records">The first five records:</div>
+              <img src="static/result3.png"/>
+          </div>
       {% endblock %}
 </body>
 </html>

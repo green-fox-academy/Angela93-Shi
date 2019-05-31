@@ -33,6 +33,9 @@
             border-collapse: collapse;
             margin-bottom: 30px;
         }
+        table th{
+            background-color: #002f5f;
+        }
         table th,table td{
             border:1px solid #fff;
             padding:10px;
@@ -41,19 +44,53 @@
             font-size: 24px;
             padding-bottom: 20px;
         }
+        .five-records {
+            font-size: 24px;
+            padding-bottom: 20px;
+        }
+        .first-question-records{
+            margin-bottom: 40px;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 40px;
+        }
+        .sql_sentence{
+            background-color: #f4f4f4;
+            color: #002f5f;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .tip_title{
+            display: block;
+        }
+        .sql_sentence p{
+            font-size: 24px;
+            color: #186e53!important;
+            margin-top: 0;
+            display: inline-block;
+            position: relative;
+            top: -3px;
+            padding-left: 10px;
+        }
+        .sql_sentence img{
+            width:24px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
     
     <div class="link-block">
-        <h1>Here are the links:</h1>
+        <h1>Here are the page links:</h1>
         <ul>
              <li><a href="http://127.0.0.1:5000/messages">messages</a></li>
              <li><a href="http://127.0.0.1:5000/reactions">reactions</a></li>
         </ul>
     </div>
+    <h1 class="block_show">Here the block shows:</h1>
     <div class="content">
-        {% block content %}Here the block shows{% endblock %}
+        {% block content %}Hello,everyone!{% endblock %}
     </div>
 
 </body>

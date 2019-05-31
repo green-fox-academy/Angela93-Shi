@@ -24,9 +24,50 @@
         </tr>
         {% endfor %}
       </table>
-      <!-- <div class="">
-          <img src="../assest/result1.png"/>
-      </div> -->
+      <div class="sql_sentence">
+          <div class="tip_title">
+              <img src="static/tishi.png"/>
+              <p>SQL QUERY</p>
+          </div>
+          CREATE VIEW vn AS
+          SELECT user_id,count(user_id) AS num
+          FROM messages
+          GROUP BY user_id
+          ORDER BY num DESC LIMIT 1</div>
+      <div class="first-question-records">
+          <div class="five-records">The first five records:</div>
+          <img src="static/result1.png"/>
+      </div>
+
+      <div class="question_text">Which day was the most active in the channel?</div>
+      <table>
+          <tr>
+            <th>#</th>
+            <th>date</th>
+            <th>post_message_times</th>
+          </tr>
+          {% for post in posts %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ post[0] }}</td>
+            <td>{{ post[1] }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        <div class="sql_sentence">
+          <div class="tip_title">
+              <img src="static/tishi.png"/>
+              <p>SQL QUERY</p>
+          </div>
+            CREATE VIEW most_active AS
+            SELECT to_date(to_char(sent_at, 'YYYY/MM/DD'), 'YYYY/MM/DD') AS date,count(*) AS num
+            FROM messages
+            GROUP BY Date
+            ORDER BY num DESC LIMIT 1</div>
+        <div class="">
+            <div class="five-records">The first five records:</div>
+            <img src="static/result4.png"/>
+        </div>
       {% endblock %}
 </body>
 </html>
