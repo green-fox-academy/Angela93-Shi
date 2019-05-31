@@ -60,21 +60,21 @@ messages_opera()
 # inert data for table reacrions
 
 def reaction_opera():
+    insert_query = 'INSERT INTO reactions(user_id,message_id,reaction) VALUES (%s,%s,%s)'
     for json in jsondata:
-        user_id=json['user']
-        if 'client_msg_id' in json:
+        try:
             message_id = json['client_msg_id']
-            try:
-                reaction_block=json['reactions']
-            except:
-                pass
-            reaction_dict=reaction_block[0]
-            reaction=reaction_dict["name"]  
-            insert_query = 'INSERT INTO reactions(user_id,message_id,reaction) VALUES (%s,%s,%s)'
-            #cursor.execute(insert_query,(user_id,message_id,reaction))
+        except:
+            pass
+        if 'reactions' in json:
+            reaction_block=json['reactions']
+            for reaction in reaction_block: 
+                users = reaction['users']
+                for user in users:
+                    cursor.execute(insert_query,(user,message_id,reaction['name']))
     con.commit()
 
-reaction_opera()
+# reaction_opera()
 
 # inert data for table mentions
 # s=re.compile(r'\<\@\w[9]\>')
@@ -135,7 +135,7 @@ def most_emoji():
     select_query2 = 'SELECT * FROM emoji_most_popular'
     cursor.execute(select_query2)
     result2=cursor.fetchall()
-    # print(f'emoji {result2[0][0]} is the most common reaction, {result2[0][1]} times')
+    print(f'emoji {result2[0][0]} is the most common reaction, {result2[0][1]} times')
     return result2
 most_emoji()
 
