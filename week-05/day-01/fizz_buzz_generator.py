@@ -1,10 +1,15 @@
 # Create a generator which will always yield the next item from the fizz buzz sequence.
 
-def generator():
-	original_list=[1, 3, -2, -4, -7, -3, -8, 12, 19, 6, 9, 10, 14]
-	for i in original_list:
-		yield i
+def fizz_buzz(n):
+    if n % 3 ==0 and n % 5 ==0:
+        yield 'fizz_buzz'
+    elif n % 3 == 0:
+        yield 'fizz'
+    elif n % 5 == 0:
+        yield 'buzz'
 
-g2 = generator()
-for _ in range(10):
-	print(next(g2))
+f=fizz_buzz(5)
+print(next(f))
+
+
+    
