@@ -43,9 +43,50 @@ select country_code from weather_station where id = '724940:23234';
 select temperature from raw_weather_data where wsid = '724940:23234'
 and year = 2008 and month = 6 and day = 1 allow filtering;
 
+ temperature
+-------------
+          15
+          15
+        15.6
+          15
+          15
+        14.4
+        13.3
+        12.2
+        11.7
+        10.6
+          10
+          10
+        10.6
+        11.1
+        11.1
+           0
+        11.7
+        11.7
+        11.7
+        11.7
+        11.7
+        12.2
+        12.8
+        13.3
+
+(24 rows)
+
 -- Show the temperatures for June 1st, 2008 from 9AM to 3PM.
 select temperature from raw_weather_data where wsid = '724940:23234' and year = 2008 and month = 6 
 and day = 1 and hour >= 9 and hour <= 15 allow filtering;
+
+ temperature
+-------------
+        11.7
+        10.6
+          10
+          10
+        10.6
+        11.1
+        11.1
+
+(7 rows)
 
 -- What is the average elevation of the weather stations in Indiana?
 select avg(elevation) from weather_station where state_code = 'IN' allow filtering;
