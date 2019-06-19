@@ -6,17 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>search_result</title>
     <style>
+        .return-result-page{
+            padding:20px 50px;
+        }
         .return-result-title{
             color:#002f5f;
-            text-transform: uppercase;
+            text-transform: capitalize;
             margin-bottom:30px;
         }
+        body{
+            background: url(../static/bg_new.jpg) no-repeat left fixed;
+            background-size: cover;
+        }
+        .result_show{
+            animation-duration: 3s;
+            animation-name: slidein;
+            color:#ca6d27;
+            font-size: 56px;
+            font-weight: 600;
+        }
+        @keyframes slidein {
+            from {
+            margin-left: 100%;
+            width: 300%; 
+            }
+            to {
+            margin-left: 0%;
+            width: 100%;
+            }
+}
     </style>
 </head>
 <body>
     <div class="return-result-page">
-        <h1 class="return-result-title">The price based on  these conditions is:</h1>
-        €{{ result }}
+        <h1 class="return-result-title">The price based on these conditions is:</h1>
+        <div class="result_show">
+            €{{ result }}
+        </div>
     </div>
 
 </body>

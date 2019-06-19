@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"> -->
     <link href="../static/base.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <title>rean_estate_value</title>
     <style>
         .product_search_container{
-            padding:50px;
+            padding:20px 50px;
             /* float: right; */
         }
         input,select{
@@ -91,12 +92,23 @@
             margin-right: 20px;
             font-size: 18px;
         }
+        .tip{
+            font-size: 16px;
+            color: #55656a;
+        }
+        .error {
+            display: none;
+            margin-left: 254px;
+            position: relative;
+            margin-top: 10px;
+            color: #c50720;
+        }
     </style>
 </head>
 <body>
     <div class="product_search_container">
         <h1>For real estate value,Please Choose your conditions below:</h1>
-        <form action="/result" method="GET">
+        <form action="/result" method="GET" id="formobj" onsubmit="check()">
             <div class="row">
                 <label>HoldType</label>
                 <select type ="text" name="holdType">
@@ -115,7 +127,9 @@
             </div>
             <div class="row">
                 <label>Bedroom Number</label>
-                <input type ="text" name="bedroom" placeholder="bedroom number">
+                <input type ="text" id="bedroom_id" name="bedroom" placeholder="bedroom number">
+                <span class="tip">* The most number of bedrooms is 7</span>
+                <div class="error error1">The bedroom can't be empty</div>
             </div>
             <div class="row">
                 <label>Usage</label>
@@ -126,12 +140,29 @@
             </div>
             <div class="row">
                 <label>Postcode</label>
-                <input type ="text" name="postcode" placeholder="postcode">
+                <input type ="text" id="postcode" name="postcode" placeholder="postcode">
+                <span class="tip">eg: BA20 2HE</span>
+                <div class="error error2">The postcode can't be empty</div>
             </div>
             <input type ="submit" value="Search">
             <input type ="reset" value="Reset">
         </form>
     </div>
-    <div class="mask"></div>
 </body>
+<script>
+    $("#formobj").submit(function(){
+        var bedroom_id = $("#bedroom_id").val();
+        var postcode = $("#postcode").val();
+        if(bedroom_id && postcode){
+            return true;
+        }else if(!bedroom_id){
+            $('.error1').show()
+            return false
+        }else if(!postcode){
+            $('.error2').show()
+            return false
+        }
+    })
+    
+</script>
 </html>
