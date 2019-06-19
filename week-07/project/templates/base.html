@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="../static/base.css" rel="stylesheet" type="text/css">
+    <title>rean_estate_value</title>
+    <style>
+        .product_search_container{
+            padding:50px;
+        }
+        input,select{
+            height:40px;
+            line-height: 40px;
+            padding-left:10px;
+        }
+        input[type="submit"]{
+            height: 40px;
+            line-height: 40px;
+            background-color: #0075a4;
+            color: #fff;
+            border: none;
+            padding: 0 20px;
+            text-transform: uppercase;
+            border-radius: 5px;
+        }
+        input[type="submit"]:hover{
+            background-color: #002f5f;
+        }
+        h1,h2{
+            color:#002f5f;
+            text-transform: capitalize;
+            margin-bottom:30px;
+        }
+        thead tr th{
+            background-color: #0075a4;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="product_search_container">
+        <h1>real estate value</h1>
+        <form action="/result" method="GET">
+            <select type ="text" name="holdType">
+                <option>Freehold</option>
+                <option>Leasehold</option>
+            </select>
+            <select type ="text" name="homeType">
+                <option>Semi-Detached</option>
+                <option>Detached</option>
+                <option>Terraced</option>
+                <option>Flat</option>
+            </select>
+            <input type ="text" name="bedroom" placeholder="bedroom number">
+            <select type ="text" name="usage">
+                <option>Residential</option>
+                <option>Residential(New Build)</option>
+            </select>
+            <input type ="text" name="postcode" placeholder="postcode">
+            <input type ="submit" value="Search">
+        </form>
+        <div class="result-display">
+
+        </div>
+    </div>
+</body>
+</html>

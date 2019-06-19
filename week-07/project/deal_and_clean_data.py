@@ -5,6 +5,9 @@ from pandas.io.json import json_normalize
 from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+import math
+
 
 estate_data = pd.read_csv("estate_data4.csv")
 data = pd.DataFrame(estate_data)
@@ -46,7 +49,7 @@ index_numbers = pd.Series([x for x in range(len(sorted_df))])
 new_data = sorted_df.set_index(index_numbers)
 
 new_data['soldYear'] = new_data['soldYear'].astype(int)
-new_data['noBed'] = new_data['noBed'].astype(int)
+#new_data['noBed'] = new_data['noBed'].astype(int)
 new_data = new_data.drop(['address','soldDate'], axis=1)
 new_data = new_data[new_data['noBed'] != 'nan']
 
@@ -60,9 +63,9 @@ data_df = pd.merge(new_data,ukpostcodes_df,how="left", left_on="postCode",right_
 data_df['holdType'] = data_df['holdType'].str.strip()
 def holdType(value):
     if value == 'Freehold':
-        return 0
-    elif value == 'Leasehold':
         return 1
+    elif value == 'Leasehold':
+        return 2
     else:
         return value
 
@@ -72,13 +75,13 @@ data_df['holdType'] = data_df['holdType'].map(holdType)
 #deal with homeType: Semi-Detached:0,Detached:1,Terraced:2,Flat:3
 def homeType(value):
     if value == 'Semi-Detached':
-        return 0
-    elif value == 'Detached':
         return 1
-    elif value == 'Terraced':
+    elif value == 'Detached':
         return 2
-    elif value == 'Flat':
+    elif value == 'Terraced':
         return 3
+    elif value == 'Flat':
+        return 4
     else:
         return value
 
@@ -89,9 +92,9 @@ data_df['usage'] = data_df['usage'].str.strip()
 
 def usage(value):
     if value == 'Residential':
-        return 0
-    elif value == 'Residential\xa0(New Build)':
         return 1
+    elif value == 'Residential\xa0(New Build)':
+        return 2
     else:
         return value
 
@@ -100,7 +103,13 @@ data_df['usage'] = data_df['usage'].map(usage)
 #------------------------------build model------------------------------------------
 new_data_df = data_df[['holdType','homeType','noBed','soldPrice','usage','latitude','longitude']]
 x_train = new_data_df[['holdType','homeType','noBed','usage','latitude','longitude']]
-y_train = new_data_df['soldPrice']
+y_train = new_data_df['soldPrice'].apply(math.log)
 linear_regression = LinearRegression()
 linear_regression.fit(x_train,y_train)
+y_predict_test = linear_regression.predict(x_train)
+#---------------get the score for this model-----------------------
 score = linear_regression.score(x_train,y_train)
+# xx = pd.Series([x for x in range(len(x_train))])
+# plt.scatter(xx,y_predict_test)
+# plt.show()
+a = linear_regression.predict([[1,1,2,1,50.953005,-2.641757]])
