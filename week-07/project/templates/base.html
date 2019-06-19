@@ -4,67 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"> -->
     <link href="../static/base.css" rel="stylesheet" type="text/css">
     <title>rean_estate_value</title>
     <style>
         .product_search_container{
             padding:50px;
+            /* float: right; */
         }
         input,select{
-            height:40px;
-            line-height: 40px;
-            padding-left:10px;
-        }
-        input[type="submit"]{
             height: 40px;
             line-height: 40px;
-            background-color: #0075a4;
+            padding-left: 10px;
+            display: inline-block;
+            width: 360px;
+            border-radius: 5px;
+            outline: none;
+            border: none;  
+            color:#002f5f!important;
+            font-size: 16px;
+        }
+        input[type="text"]{
+            width:350px;
+        }
+        select{
+            background: url(../static/drop-down.png) no-repeat right;
+            -webkit-appearance: none;
+            background-size: 24px;
+            /* font-weight: 600; */
+            background-color: #fff;
+        }
+        input[type="submit"],input[type="reset"]{
+            height: 40px;
+            line-height: 40px;
+            background-color: #ca6d27;
+            border:2px solid #fff;
             color: #fff;
-            border: none;
+            border: 2px;
             padding: 0 20px;
             text-transform: uppercase;
             border-radius: 5px;
+            margin-left:290px;
+            margin-top:20px;
+            color:#fff!important;
+            font-size: 16px;
+            width:150px;
+        }
+        input[type="reset"]{
+            margin-left:20px;
+            background-color: #4b4c4ccc;
+            border:2px solid transparent;
+        }
+        input[type="reset"]:hover{
+            border:2px solid transparent;
         }
         input[type="submit"]:hover{
-            background-color: #002f5f;
+            background-color: #fff;
+            border:2px solid #ca6d27;
+            color:#ca6d27!important;
         }
-        h1,h2{
+        h1{
             color:#002f5f;
             text-transform: capitalize;
-            margin-bottom:30px;
+            margin-bottom: 60px;
+            text-align: left;
+            width: 900px;
         }
         thead tr th{
             background-color: #0075a4;
             color:#fff;
         }
+        body{
+            background: url(../static/bg_new.jpg) no-repeat left fixed;
+            background-size: cover;
+        }
+        .row{
+            margin-bottom: 10px;
+        }
+        label{
+            display: inline-block;
+            width: 230px;
+            color: #002f5f;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: right;
+            margin-right: 20px;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
     <div class="product_search_container">
-        <h1>real estate value</h1>
+        <h1>For real estate value,Please Choose your conditions below:</h1>
         <form action="/result" method="GET">
-            <select type ="text" name="holdType">
-                <option>Freehold</option>
-                <option>Leasehold</option>
-            </select>
-            <select type ="text" name="homeType">
-                <option>Semi-Detached</option>
-                <option>Detached</option>
-                <option>Terraced</option>
-                <option>Flat</option>
-            </select>
-            <input type ="text" name="bedroom" placeholder="bedroom number">
-            <select type ="text" name="usage">
-                <option>Residential</option>
-                <option>Residential(New Build)</option>
-            </select>
-            <input type ="text" name="postcode" placeholder="postcode">
+            <div class="row">
+                <label>HoldType</label>
+                <select type ="text" name="holdType">
+                    <option>Freehold</option>
+                    <option>Leasehold</option>
+                </select>
+            </div>
+            <div class="row">
+                <label>homeType</label>
+                <select type ="text" name="homeType">
+                    <option>Semi-Detached</option>
+                    <option>Detached</option>
+                    <option>Terraced</option>
+                    <option>Flat</option>
+                </select>
+            </div>
+            <div class="row">
+                <label>Bedroom Number</label>
+                <input type ="text" name="bedroom" placeholder="bedroom number">
+            </div>
+            <div class="row">
+                <label>Usage</label>
+                <select type ="text" name="usage">
+                    <option>Residential</option>
+                    <option>Residential(New Build)</option>
+                </select>
+            </div>
+            <div class="row">
+                <label>Postcode</label>
+                <input type ="text" name="postcode" placeholder="postcode">
+            </div>
             <input type ="submit" value="Search">
+            <input type ="reset" value="Reset">
         </form>
-        <div class="result-display">
-
-        </div>
     </div>
+    <div class="mask"></div>
 </body>
 </html>
