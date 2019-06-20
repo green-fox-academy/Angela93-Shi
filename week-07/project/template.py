@@ -41,6 +41,9 @@ def estate_result():
 
     elif request.method == 'POST':
         pass
+@app.route('/fianl',methods=['GET'])
+def fianl():
+    return render_template('fianl.html')
 
 def deal_with_holdType(holdType):
     if holdType == 'Freehold':

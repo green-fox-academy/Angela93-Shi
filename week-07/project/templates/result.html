@@ -64,9 +64,9 @@
         h2{
             margin-top:0;
         }
-        .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
+        /* .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
             background-color: #002f5f;
-        }
+        } */
         .tab_area{
             margin-top:30px;
         }
@@ -80,6 +80,37 @@
             border-radius: 4px;
             width: 100px;
             text-align: center;
+        }
+        input[type="submit"]{
+            height: 40px;
+            line-height: 40px;
+            background-color: #0075a4;
+            border: 2px solid #fff;
+            color: #fff;
+            border: 2px;
+            padding: 0 20px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            /* margin-left: 290px; */
+            margin-top: 20px;
+            color: #fff!important;
+            font-size: 16px;
+            width: 200px;
+        }
+        input[type="submit"]:hover{
+            background-color: #002f5f;
+            border:2px solid #002f5f;
+            color:#fff!important;
+        }
+        .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+            background-color: #ffffff75;
+            /* border: 1px solid #002f5f; */
+            color: #002f5f;
+            border-bottom: none;
+            border-radius: 0;
+        }
+        .nav>li>a:hover, .nav>li>a:focus{
+            background-color: transparent;
         }
     </style>
 </head>
@@ -118,6 +149,9 @@
                 </div>
             </div>
         </div>
+        <form action="/fianl" method="GET">
+            <input type ="submit" value="Continue">
+        </form>
     </div>
 <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
 integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
@@ -125,7 +159,7 @@ crossorigin=""></script>
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>    
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> 
 <script>
-    var map = L.map('map').setView([51.5, -0.09],20);
+    var map = L.map('map').setView([51.5, -0.09],30);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
