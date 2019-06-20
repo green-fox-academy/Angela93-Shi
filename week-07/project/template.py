@@ -5,6 +5,26 @@ from deal_and_clean_data import *
 app = Flask(__name__)
 
 @app.route('/')
+def welcome():
+    return render_template('welcome.html')
+
+@app.route('/assignment',methods=['GET'])
+def assigenment():
+    return render_template('assignment.html')
+
+@app.route('/data',methods=['GET'])
+def data_page():
+    return render_template('data.html')
+
+@app.route('/analysis',methods=['GET'])
+def analysis_page():
+    return render_template('analysis.html')
+
+@app.route('/model',methods=['GET'])
+def model_page():
+    return render_template('model.html')
+
+@app.route('/base',methods=['GET'])
 def base():
     return render_template('base.html')
 

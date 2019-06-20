@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"> -->
+    <link href="../static/base.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <title>real_estate_value</title>
+    <style>
+        html{
+            position: relative;
+            height:100%;
+        }
+        h1{
+            color:#002f5f;
+            text-transform: capitalize;
+            margin-bottom: 30px;
+            text-align: left;
+            font-size:36px;
+            text-align: center;
+        }
+        thead tr th{
+            background-color: #0075a4;
+            color:#fff;
+        }
+        body{
+            background: url(../static/bg_new.jpg) no-repeat left fixed;
+            background-size: cover;
+        }
+        p{
+            color:#333;
+            font-size: 24px;
+        }
+        .subtitle{
+            font-size: 36px;
+            color: #002f5f;
+            margin-bottom: 30px;
+        }
+        .assignment_container{
+            padding:20px 50px;
+            text-align: center;
+            margin-top:60px;
+        }
+        input[type="submit"]{
+            height: 40px;
+            line-height: 40px;
+            background-color: #0075a4;
+            border: 2px solid #fff;
+            color: #fff;
+            border: 2px;
+            padding: 0 20px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            /* margin-left: 290px; */
+            margin-top: 20px;
+            color: #fff!important;
+            font-size: 16px;
+            width: 200px;
+        }
+        input[type="submit"]:hover{
+            background-color: #002f5f;
+            border:2px solid #002f5f;
+            color:#fff!important;
+        }
+        .name{
+            position: absolute;
+            right: 50px;
+            bottom: 20px;
+            font-size: 28px;
+            color: #fff;
+        }
+        .pic{
+            overflow-x: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div class="assignment_container">
+        <div class="assignment_text">
+            <h1>Data scrapped from the website</h1>
+            <div class="pic">
+                <img src="../static/data.png">
+            </div>
+          
+        </div>
+        <form action="/analysis" method="GET">
+            <input type ="submit" value="Next">
+        </form>
+    </div>
+</body>
+</html>

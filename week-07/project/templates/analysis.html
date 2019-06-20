@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.css') }}">
+    <title>real_estate_value</title>
+    <style>
+        html{
+            position: relative;
+            height:100%;
+        }
+        h1{
+            color:#002f5f;
+            text-transform: capitalize;
+            margin-bottom: 60px;
+            text-align: left;
+            font-size:36px;
+            text-align: center;
+        }
+        thead tr th{
+            background-color: #0075a4;
+            color:#fff;
+        }
+        /* body{
+            background: url(../static/bg_new.jpg) no-repeat left fixed;
+            background-size: cover;
+        } */
+        p{
+            color:#333;
+            font-size: 24px;
+        }
+        .subtitle{
+            font-size: 36px;
+            color: #002f5f;
+            margin-bottom: 30px;
+        }
+        .assignment_container{
+            padding:20px 50px;
+            text-align: center;
+        }
+        input[type="submit"]{
+            height: 40px;
+            line-height: 40px;
+            background-color: #0075a4;
+            border: 2px solid #fff;
+            color: #fff;
+            border: 2px;
+            padding: 0 20px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            /* margin-left: 290px; */
+            margin-top: 20px;
+            color: #fff!important;
+            font-size: 16px;
+            width: 200px;
+        }
+        input[type="submit"]:hover{
+            background-color: #002f5f;
+            border:2px solid #002f5f;
+            color:#fff!important;
+        }
+        .name{
+            position: absolute;
+            right: 50px;
+            bottom: 20px;
+            font-size: 28px;
+            color: #fff;
+        }
+        img{
+            width:100%;
+        }
+        .dg-container nav span {
+            background-color: #0075a4;
+            width: 16px;
+            height: 16px;
+            border-radius: 16px;
+        }
+        .dg-wrapper a{
+            background-color: #fff;
+        }
+        #owl-demo .item img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        form{
+            margin-top:30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="assignment_container">
+        <div class="assignment_text">
+            <h1>Chart Analysis</h1>
+                <div id="owl-demo" class="owl-carousel owl-theme">
+                    <div class="item"><img src="../static/city_price.png" alt="image01"></div>
+                    <div class="item"><img src="../static/holdType_price.png" alt="image02"></div>
+                    <div class="item"><img src="../static/homeType_price.png" alt="image03"></div>
+                    <div class="item"><img src="../static/bedroom_price.png" alt="image04"></div>
+                    <div class="item"><img src="../static/usage_price.png" alt="image05"></div>
+                    <!-- <div class="owl-controls">
+                        <div class="owl-dots">
+                            <div class="owl-dot active"><span></span></div>
+                            <div class="owl-dot"><span></span></div>
+                            <div class="owl-dot"><span></span></div>
+                        </div>
+                    </div> -->
+                </div>
+          
+        </div>
+        <form action="/model" method="GET">
+            <input type ="submit" value="Next">
+        </form>
+    </div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type=text/javascript src="{{ url_for('static', filename='js/owl.carousel.js') }}"></script>
+<script type="text/javascript">
+    // jQuery(function() {
+    //     $('#dg-container').gallery();
+    // });
+    jQuery(function() {
+ 
+        $("#owl-demo").owlCarousel({
+            nav:true,
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            items : 1, 
+
+        });
+
+});
+</script>
+</body>
+</html>
