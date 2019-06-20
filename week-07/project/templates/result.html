@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin="">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <title>search_result</title>
     <style>
         .return-result-page{
@@ -11,7 +15,6 @@
         }
         .return-result-title{
             color:#002f5f;
-            text-transform: capitalize;
             margin-bottom:30px;
         }
         body{
@@ -34,16 +37,103 @@
             margin-left: 0%;
             width: 100%;
             }
-}
+        }
+        .map{
+            width:400px;
+            height:200px;
+        }
+        .maparea{
+            display: inline-block;
+        }
+        .details{
+            display: inline-block;
+        }
+        .details div {
+            color: #55656a;
+            font-size: 16px;
+            line-height: 36px;
+        }
+        .details span{
+            color:#ca6d27;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        h1,h2{
+            color: #002f5f;
+        }
+        h2{
+            margin-top:0;
+        }
+        .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
+            background-color: #002f5f;
+        }
+        .tab_area{
+            margin-top:30px;
+        }
+        .tab-content{
+            border-radius: 5px;
+            padding: 20px;
+            background-color: #ffffff75;
+            height: 290px;
+        }
+        .nav-pills>li>a {
+            border-radius: 4px;
+            width: 100px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="return-result-page">
         <h1 class="return-result-title">The price based on these conditions is:</h1>
         <div class="result_show">
-            €{{ result }}
+            € {{ result }}
+        </div>
+        <div class="tab_area">
+            <ul id="mytab" class="nav nav-pills" role="tablist">
+                <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+                <li><a href="#map-tab" data-toggle="tab">Map</a></li>
+            </ul>
+                
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="details">
+                    <div class="details_block">
+                        <h2>Here are the choices you have chosen:</h1>
+                        <div class="details">
+                            <div>The holdType you choose is:<span>{{holdType}}</span></div>
+                            <div>The homeType you choose is:<span>{{homeType}}</span></div>
+                            <div>The number of bedroom you choose is:<span>{{noBed}}</span></div>
+                            <div>The usage you choose is:<span>{{usage}}</span></div>
+                            <div>The postcode you choose is:<span>{{postcode}}</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="map-tab">
+                    <div class="details_block">
+                        <div class="maparea">
+                            <h2>The map shows where the house is:</h2>
+                            <div id="map" class="map"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+crossorigin=""></script>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>    
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> 
+<script>
+    var map = L.map('map').setView([51.5, -0.09],50);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
+    L.marker([50.953005,-2.641757]).addTo(map)
+    .bindPopup('The house is here')
+    .openPopup();
+
+</script>
 </body>
 </html>

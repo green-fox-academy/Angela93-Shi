@@ -17,7 +17,7 @@ def estate_result():
         usage = request.args.get("usage")
         postcode = request.args.get("postcode")
         predict_num = deal_with_result(holdType,homeType,bedroom,usage,postcode)
-        return render_template("result.html", result=predict_num)
+        return render_template("result.html", result=predict_num,holdType =holdType,homeType=homeType,noBed=bedroom,usage=usage,postcode=postcode)
 
     elif request.method == 'POST':
         pass
@@ -69,4 +69,4 @@ def deal_with_result(holdType,homeType,bedroom,usage,postcode):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug = True,use_reloader = True)

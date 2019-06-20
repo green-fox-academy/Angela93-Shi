@@ -5,7 +5,9 @@ from pandas.io.json import json_normalize
 from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
 import math
 
 
@@ -100,16 +102,39 @@ def usage(value):
 
 data_df['usage'] = data_df['usage'].map(usage)
 
-#------------------------------build model------------------------------------------
+#------------------------------build model with liner regression------------------------------------------
 new_data_df = data_df[['holdType','homeType','noBed','soldPrice','usage','latitude','longitude']]
 x_train = new_data_df[['holdType','homeType','noBed','usage','latitude','longitude']]
 y_train = new_data_df['soldPrice'].apply(math.log)
+
 linear_regression = LinearRegression()
 linear_regression.fit(x_train,y_train)
 y_predict_test = linear_regression.predict(x_train)
 #---------------get the score for this model-----------------------
 score = linear_regression.score(x_train,y_train)
-# xx = pd.Series([x for x in range(len(x_train))])
-# plt.scatter(xx,y_predict_test)
-# plt.show()
 a = linear_regression.predict([[1,1,2,1,50.953005,-2.641757]])
+#---------------------use model forest random regression-----------------------
+
+new_data = new_data_df.values
+X = new_data[:, 1:]  # all rows, no label
+y = new_data[:, 0]  # all rows, label only
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+
+scaler = StandardScaler()
+scaler.fit(X_train)
+X_train = scaler.transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Establish model
+model = RandomForestRegressor(n_jobs=-1)
+
+estimators = np.arange(10, 200, 10)
+scores = []
+for n in estimators:
+    model.set_params(n_estimators=n)
+    model.fit(X_train, y_train)
+    scores.append(model.score(X_test, y_test))
+plt.title("Effect of n_estimators")
+plt.xlabel("n_estimator")
+plt.ylabel("score")
+plt.plot(estimators, scores)
