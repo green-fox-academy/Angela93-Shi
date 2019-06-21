@@ -98,19 +98,13 @@
         <div class="assignment_text">
             <h1>Chart Analysis</h1>
                 <div id="owl-demo" class="owl-carousel owl-theme">
-                    <div class="item"><img src="../static/city_price.png" alt="image01"></div>
+                    <div class="item"><img src="../static/city1.png" alt="image01"></div>
                     <div class="item"><img src="../static/year_price.png" alt="image01"></div>
-                    <div class="item"><img src="../static/holdType_price.png" alt="image02"></div>
-                    <div class="item"><img src="../static/homeType_price.png" alt="image03"></div>
-                    <div class="item"><img src="../static/bedroom_price.png" alt="image04"></div>
-                    <div class="item"><img src="../static/usage_price.png" alt="image05"></div>
-                    <!-- <div class="owl-controls">
-                        <div class="owl-dots">
-                            <div class="owl-dot active"><span></span></div>
-                            <div class="owl-dot"><span></span></div>
-                            <div class="owl-dot"><span></span></div>
-                        </div>
-                    </div> -->
+                    <div class="item"><img src="../static/hold.png" alt="image02"></div>
+                    <div class="item"><img src="../static/home.png" alt="image03"></div>
+                    <div class="item"><img src="../static/bedroom.png" alt="image04"></div>
+                    <div class="item"><img src="../static/usage.png" alt="image05"></div>
+             
                 </div>
           
         </div>
@@ -127,11 +121,10 @@
     jQuery(function() {
  
         $("#owl-demo").owlCarousel({
-            nav:true,
             slideSpeed : 300,
             paginationSpeed : 400,
             items : 1, 
-
+            dots:true
         });
 
 });

@@ -58,6 +58,9 @@
             font-weight: 600;
             font-size: 18px;
         }
+        h1{
+            text-transform: capitalize;
+        }
         h1,h2{
             color: #002f5f;
         }
@@ -75,6 +78,8 @@
             padding: 20px;
             background-color: #ffffff75;
             height: 290px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
         .nav-pills>li>a {
             border-radius: 4px;
@@ -112,13 +117,17 @@
         .nav>li>a:hover, .nav>li>a:focus{
             background-color: transparent;
         }
+        .details div:hover{
+            font-size: 24px;
+            cursor:pointer;
+        }
     </style>
 </head>
 <body>
     <div class="return-result-page">
         <h1 class="return-result-title">The price based on these conditions is:</h1>
         <div class="result_show">
-            € {{ result }}
+            £ {{ result }}
         </div>
         <div class="tab_area">
             <ul id="mytab" class="nav nav-pills" role="tablist">
