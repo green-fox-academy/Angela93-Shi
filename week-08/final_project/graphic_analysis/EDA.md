@@ -59,6 +59,12 @@ PHILIPPINES_BEVERAGE_PURCHASE_HHP_CLEANED.csv
 | DEMOG_STRATA         | Urban or Rural                                               |
 | DEMOG_LIFESTAGE      | Family composition                                           |
 
+<span style='background:yellow'>The relationship among **Packs_Bought_CORR, Units_Per_Pack_CORR, Units_Bought_CORR, Price_Per_Liter_CORR, Liters_Bought_CORR, Spend_CORR and Unit_Size_CORR**</span>
+
+1. **Packs_Bought_CORR * Units_Per_Pack_CORR = Units_Bought_CORR**
+2. **Price_Per_Liter_CORR * Liters_Bought_CORR = Spend_CORR**
+3. **Units_Bought_CORR * Unit_Size_CORR / 1000 = Liters_Bought_CORR**
+
 
 
 ### outputs
@@ -100,19 +106,33 @@ PHILIPPINES_BEVERAGE_PURCHASE_HHP_CLEANED.csv
 
 ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\coca-cola_sales_channel.png)
 
+> <span style="color:#002f5f; font-size:18px">**Analysis the market price of the same package for different brands **</span>
 
+* How many type of packages for brand coca cola in the market?
 
-* Price of package —— 'can' for different brands
+  ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\coke_package.png)
 
-  ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\can_price_of_brands.png)
+  *There three type packages of brand coca cola in the market, so we compare these three type packages             
 
+  with other brands to see if the price has a little difference
 
+  * price of package --'glass bottle' for different brands
 
-* Price of package ——'plastic bottle' for different brands
+    ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\glass_bottle_price_of_brands.png)
 
-  ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\plastic_bottle_price_of_brands.png)
+    
 
+  * Price of package ——'plastic bottle' for different brands
 
+    ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\plastic_bottle_price_of_brands.png)
+
+  * Price of package —— 'can' for different brands
+
+    ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\can_price_of_brands.png)
+
+    
+
+			> AS we can see from the two charts, except the untagged staff, the prices of the same package have the little difference.
 
 * Sales of different packsize under the manufactuere of coca-cola
 
@@ -124,7 +144,7 @@ PHILIPPINES_BEVERAGE_PURCHASE_HHP_CLEANED.csv
 
   ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\sales__of_different_package.png)
 
-> Analysis the columns of DEMOG_***
+> <span style="color:#002f5f; font-size:18px">**Analysis DEMOG__ staff**</span>
 
 * Sales of DEMOG_STRATA in different regions
 
@@ -145,6 +165,22 @@ PHILIPPINES_BEVERAGE_PURCHASE_HHP_CLEANED.csv
     ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\which_region_has_HHsize_popular_most.png)
 
 
+
+* Analysis which regions have the most coca-cola buying based on "DEMOG_KIDS"?
+
+  * which DEMOG_KIDS buys the coca-cola most?
+
+    ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\which_DEMOG_KIDS_buy_coca_most.png)
+
+    * The graphic show that "No Child" households buy the coca cola most , based on this, we can 
+
+      get the conclusion which region has the most population of this type household
+
+  * which region has the most households with no child?
+
+    ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\which_region_most_no_child.png)
+
+    
 
 * Analysis which regions have the most coca-cola buying based on "DEMOG_HHSEC"?
 
@@ -198,15 +234,67 @@ PHILIPPINES_BEVERAGE_PURCHASE_HHP_CLEANED.csv
 
     ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\which_region_most_young.png)
 
+    
 
+> AS the analysis above, we can know that NCR has the highest sales for the coca cola. So which type of channel has the most sale in NCR?
 
-> AS the analysis above, we can know that NCR has the highest sales for the coca cola.
+ * which channel has the highest sale in NCR?
 
-
+   ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\the_main_sales_channel_NCR.png)
 
 * The sales change of different regions from 2016 to 2019
 
   ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\sales_change_of_coca_2016_2019.png)
+
+  
+
+> <span style="color:#002f5f; font-size:18px">**Analysis pack__ staff**</span>
+
+* which pack of category is most popular?
+
+  ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\popular_pack_cat.png)
+
+  >As the graphic shows, people is more likely to buy the soft drinks with 1 pack
+
+
+
+* the soft drinks (the most popular category of COCA-COLA) sales situation of different unit size 
+
+  ![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\unit_size_popular.png)
+
+  
+
+  >AS the left boxplot shows, the unit size between 750ml and 1000ml is more popular, and from the right bar shows , unit size with 1000ml is the most popular.
+
+  
+
+* analysis the sales of different packages for categories of COCA-COLA
+
+  <center>The sales of different packages for categories of COCA-COLA</center>
+![](C:\Users\Angela_Shi\Desktop\angela\fianl_project_local\graphic_analysis\coca-cola_category_package.png)
+  
+> 1. for the left top bar--"The sales of different packages on SOFTDRINKS", we can know that *GLASS BOTTLE* is the most popular, the second is *PLASTIC  BOTTLE*, and the last is *CAN*.
+  > 2. for the left right bar--"The sales of different packages on DRINKING WATER/MINERAL WATER", we can find that *BOTTLED WATER* is more popular than *DISPENSER*
+  > 3. for the bottom left bar --"The sales of different packages on LIQUID / RTD JUICE", we can find that *TETRA PACK* is far more than *PLASTIC BOTTLE*
+  > 4. for the bottom right bar--"The sales of different packages on LIQUID / RTD SPORTS / ENERGY D", we can find that *PLASTIC BOTTLE* is far more than *PLASTIC BOTTLE W/ SPORTS CAP* 
+>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
